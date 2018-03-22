@@ -20,7 +20,8 @@ app.get("/", (request, response) => {
 const dreams = [
   "Find and count some sheep",
   "Climb a really tall mountain",
-  "Wash the dishes"
+  "Wash the dishes",
+  "Hi there, this is AmmarTV"
 ]
 
 app.get("/dreams", (request, response) => {
