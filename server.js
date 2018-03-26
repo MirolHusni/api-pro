@@ -17,7 +17,7 @@ app.get('/dateValues/:dateVal',function(req,res,next){
   
   var dateVal = req.params.dateVal;
   
-  res.
+  res.json({unix: dateVal});
 });
 
 app.listen(3000, function(){
