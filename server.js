@@ -9,17 +9,20 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-
-
-
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 
 //Get CALL to return JSON thats format natural and unix date
 app.get("/:dateVal", (request, response) => {
-  response.sendFile(__dirname + '/views/index.html')
   
+  //Get the request for date
   var dateVal = request.params.dateVal;
+  
+  //Options for formating date in natural date view
+  var dateFormatting = {
+    days: 'numeric',
+    month: 'l
+  }
   
    response.json({unix: dateVal});
 });
