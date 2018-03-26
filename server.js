@@ -17,14 +17,25 @@ app.get("/:dateVal", (request, response) => {
   
   //Get the request for date
   var dateVal = request.params.dateVal;
+  var naturalDate;
   
   //Options for formating date in natural date view
   var dateFormatting = {
     days: 'numeric',
-    month: 'l
+    month: 'long',
+    year: 'numeric'
   }
   
-   response.json({unix: dateVal});
+  if(isNaN(dateVal)){
+    naturalDate = new Date(dateVal);
+    naturalDate = naturalDate.toLocaleDateString("en-us", dateFormatting);
+    var unixDate = new Date(dateVal).getTime()/1000;
+  }
+  
+   response.json({
+     unix: dateVal,
+     naturalDate: naturalDate
+   });
 });
 
 
