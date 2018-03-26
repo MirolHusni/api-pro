@@ -1,24 +1,29 @@
-// server.js
-// where your node app starts
 
-// init project
-const express = require('express')
-const app = express()
+//Basic required import for NodeJS
+var express = require('express')
+var bodyParser = require('body-parser');
+var cors = require('cors');
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+//Create an instance of express for our app and instantiate bodyParser and Cors
+var app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+
+
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 
-// http://expressjs.com/en/starter/basic-routing.html
+//Get CALL to return JSON thats format natural and unix date
 app.get("/:dateVal", (request, response) => {
-  response.sendFile(__dirname + '/views/index.html');
+  response.sendFile(__dirname + '/views/index.html')
   
   var dateVal = request.params.dateVal;
   
-  response.json();
-})
+   response.json({unix: dateVal});
+});
+
 
 
 // listen for requests :)
